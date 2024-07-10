@@ -1,3 +1,4 @@
+# List of quiz questions
 quiz = [
     {
         "question": "Q1) Who is the current Prime Minister of India?",
@@ -31,16 +32,18 @@ quiz = [
     }
 ]
 
-def rules():
+def display_rules():
+    """Display the rules of the quiz."""
     print("\nWelcome to the Quiz Game!\n")
     print("Here are the rules for this game:")
-    print("1. The quiz contains 5 multiple choice questions.")
+    print("1. The quiz contains 5 multiple-choice questions.")
     print("2. Each question has 4 options, and only one of them is correct.")
     print("3. Each question carries one point.")
     print("4. There is no negative marking for wrong answers.")
     print("\nEnjoy the game!\n")
 
 def run_quiz(quiz):
+    """Run the quiz game and calculate the score."""
     score = 0
     total_questions = len(quiz)
     
@@ -51,19 +54,12 @@ def run_quiz(quiz):
         if check_answer(question, user_answer):
             score += 1
         print()
-
-    print(f"\nQuiz completed! Your final score is {score}/{total_questions}.\n")
     
-    if total_questions > 0:
-        percentage = (score * 100) // total_questions
-        print(f"{percentage}% of answers are correct.")
-    else:
-        print("No questions found.")
-    
-    print("\nThank you for playing!")
+    display_score(score, total_questions)
 
 def get_user_answer():
-    valid_answers = ['A', 'B', 'C', 'D']
+    """Prompt user for an answer and validate input."""
+    valid_answers = {'A', 'B', 'C', 'D'}
     while True:
         user_answer = input("Enter your answer (A, B, C, or D): ").strip().upper()
         if user_answer in valid_answers:
@@ -72,11 +68,13 @@ def get_user_answer():
             print("Invalid input. Please enter A, B, C, or D.")
 
 def display_question(question_data):
+    """Display a single question and its options."""
     print(question_data["question"])
     for option in question_data["options"]:
         print(option)
 
 def check_answer(question_data, user_answer):
+    """Check if the user's answer is correct."""
     correct_answer = question_data["answer"]
     
     if user_answer == correct_answer:
@@ -87,8 +85,21 @@ def check_answer(question_data, user_answer):
         print(f"\nExplanation:\n{question_data['explain']}")
         return False
 
+def display_score(score, total_questions):
+    """Display the final score and percentage."""
+    print(f"\nQuiz completed! Your final score is {score}/{total_questions}.\n")
+    
+    if total_questions > 0:
+        percentage = (score * 100) // total_questions
+        print(f"Your score percentage is: {percentage}%")
+    else:
+        print("No questions found.")
+    
+    print("\nThank you for playing!")
+
 def main():
-    rules()
+    """Main function to start the quiz game."""
+    display_rules()
     run_quiz(quiz)
 
 if __name__ == "__main__":
