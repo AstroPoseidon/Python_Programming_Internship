@@ -1,18 +1,32 @@
-This repository contains a simple quiz game project developed during a 6-week internship at Motion Cut. The quiz game is implemented in Python and allows users to answer multiple-choice questions and receive a score based on their answers.
+# Python Projects
 
-#Project Overview
+This repository contains two Python projects:
 
-The quiz game consists of the following components:
+1. **Quiz Game**: A multiple-choice quiz game with predefined questions.
+2. **Word Counter**: A program to count the number of words in a given text.
 
-- **quiz.py**: Contains the main logic and implementation of the quiz game.
-- **README.md**: This file, providing an overview of the project and instructions.
-- **requirements.txt**: Lists any dependencies required to run the quiz game (if applicable).
-- **.gitignore**: Specifies files and directories that should be ignored by Git (e.g., virtual environment files, IDE settings).
-- **LICENSE**: Optional file specifying the terms under which the project's code can be used, modified, and distributed.
+## Project 1: Quiz Game
 
-## Features
+### Description
 
-- Multiple-choice questions with 4 options each.
-- Correct answer validation and scoring system.
-- Display of correct answers and explanations after each question.
-- Rules and instructions displayed at the beginning of the game.
+The Quiz Game is a command-line based multiple-choice quiz application. It presents the user with a series of questions, each having four options. The user selects an answer, and the program provides immediate feedback on whether the answer is correct. At the end of the quiz, the user's score and percentage of correct answers are displayed.
+
+### Features
+
+- 5 multiple-choice questions
+- Each question has 4 options
+- Immediate feedback on answer correctness
+- Final score and percentage displayed at the end
+- No negative marking for wrong answers
+
+## Project 2: Word Counter
+
+### Description
+
+The Word Counter is a simple command-line program that counts the number of words in a given sentence or paragraph entered by the user. It ensures that the user input is not empty before counting the words.
+
+### Features
+
+- Prompts the user to enter a sentence or paragraph
+- Counts and displays the number of words in the input
+- Handles empty input gracefully by prompting the user again
