@@ -33,7 +33,7 @@ quiz = [
 ]
 
 def display_rules():
-    """Display the rules of the quiz."""
+    #Display the rules of the quiz.
     print("\nWelcome to the Quiz Game!\n")
     print("Here are the rules for this game:")
     print("1. The quiz contains 5 multiple-choice questions.")
@@ -43,7 +43,7 @@ def display_rules():
     print("\nEnjoy the game!\n")
 
 def run_quiz(quiz):
-    """Run the quiz game and calculate the score."""
+    #Run the quiz game and calculate the score.
     score = 0
     total_questions = len(quiz)
     
@@ -58,7 +58,7 @@ def run_quiz(quiz):
     display_score(score, total_questions)
 
 def get_user_answer():
-    """Prompt user for an answer and validate input."""
+    #Prompt user for an answer and validate input.
     valid_answers = {'A', 'B', 'C', 'D'}
     while True:
         user_answer = input("Enter your answer (A, B, C, or D): ").strip().upper()
@@ -68,13 +68,13 @@ def get_user_answer():
             print("Invalid input. Please enter A, B, C, or D.")
 
 def display_question(question_data):
-    """Display a single question and its options."""
+    #Display a single question and its options.
     print(question_data["question"])
     for option in question_data["options"]:
         print(option)
 
 def check_answer(question_data, user_answer):
-    """Check if the user's answer is correct."""
+    #Check if the user's answer is correct.
     correct_answer = question_data["answer"]
     
     if user_answer == correct_answer:
@@ -86,7 +86,7 @@ def check_answer(question_data, user_answer):
         return False
 
 def display_score(score, total_questions):
-    """Display the final score and percentage."""
+    #Display the final score and percentage.
     print(f"\nQuiz completed! Your final score is {score}/{total_questions}.\n")
     
     if total_questions > 0:
@@ -98,7 +98,7 @@ def display_score(score, total_questions):
     print("\nThank you for playing!")
 
 def main():
-    """Main function to start the quiz game."""
+    #Main function to start the quiz game.
     display_rules()
     run_quiz(quiz)
 
