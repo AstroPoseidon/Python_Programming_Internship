@@ -19,6 +19,15 @@ The Quiz Game is a command-line based multiple-choice quiz application. It prese
 - Final score and percentage displayed at the end
 - No negative marking for wrong answers
 
+### How to Run
+
+1. Clone the repository.
+2. Navigate to the project directory.
+3. Run the script:
+
+   ```bash
+   python word_counter.py
+
 ## Project 2: Word Counter
 
 ### Description
