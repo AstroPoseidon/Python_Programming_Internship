@@ -77,7 +77,7 @@ def view_category_wise():
     for category, amount in categories.items():
         print(f"{category}: {amount:.2f}")
 
-# Main Program
+# Main Program for expense tracker
 if __name__ == "__main__":
     expenses = load_expenses()
     while True:
