@@ -45,14 +45,14 @@ def save_expenses(expenses):
 
 # Add a new expense
 def add_expense():
-    amount = float(input("Enter amount spent: "))
+    amount = float(input("\nEnter amount spent: "))
     description = input("Enter a brief description: ")
     category = input("Enter expense category (e.g., food, transportation): ")
     # Capture current date and time
     current_datetime = datetime.now()
     expenses.append(Expense(amount, description, category, current_datetime))
     save_expenses(expenses)
-    print("Expense added successfully!")
+    print("\nExpense added successfully!")
 
 # View monthly expense summary
 def view_monthly_summary():
@@ -62,7 +62,7 @@ def view_monthly_summary():
         # Check if expense has a date and if it falls within the current month
         if expense.date_time and expense.date_time.strftime('%Y-%m') == current_month:
             total_expense += expense.amount
-    print(f"Total expense for {current_month}: {total_expense:.2f}")
+    print(f"\nTotal expense for {current_month}: {total_expense:.2f}")
 
 # View category-wise expenditure
 def view_category_wise():
@@ -73,7 +73,7 @@ def view_category_wise():
             categories[category] += expense.amount
         else:
             categories[category] = expense.amount
-    print("Category-wise expenditure:")
+    print("\nCategory-wise expenditure:")
     for category, amount in categories.items():
         print(f"{category}: {amount:.2f}")
 
@@ -81,12 +81,12 @@ def view_category_wise():
 if __name__ == "__main__":
     expenses = load_expenses()
     while True:
-        print("\nExpense Tracker Menu:")
+        print("\n\nExpense Tracker Menu:")
         print("1. Add Expense")
         print("2. View Monthly Summary")
         print("3. View Category-wise Expenditure")
         print("4. Exit")
-        choice = input("Enter your choice: ")
+        choice = input("\nEnter your choice: ")
 
         if choice == "1":
             add_expense()
@@ -96,7 +96,7 @@ if __name__ == "__main__":
             view_category_wise()
         elif choice == "4":
             save_expenses(expenses)
-            print("Exiting Expense Tracker...")
+            print("\nThank You!!")
             break
         else:
             print("Invalid choice. Please try again.")
