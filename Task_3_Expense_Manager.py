@@ -19,9 +19,9 @@ def load_expenses():
             for row in reader:
                 try:
                     # Assuming date format in CSV is YYYY-MM-DD
-                    date_str, description, category = row
+                    date_str, amount, description, category = row
                     date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()  # Convert to date object
-                    amount = float(row[1])  # Assuming amount is in second element
+                    amount = float(amount)  # Assuming amount is in the second element
                 except (ValueError, IndexError):  # Handle conversion and potential missing data
                     date_obj = None
                     amount = 0.0  # Or handle differently based on your needs
