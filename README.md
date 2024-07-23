@@ -59,7 +59,7 @@ The Expense Tracker is a command-line based application that allows users to man
 ### Features
 
 - Add new expenses with amount, description, category, and date.
-- View a summary of expenses for the current month.
+- View a summary of expenses for all recorded months.
 - View expenditures categorized by expense type.
 - Stores data in a CSV file for persistence.
 - Handles missing data and file not found errors gracefully.
