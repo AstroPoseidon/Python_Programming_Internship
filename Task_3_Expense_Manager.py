@@ -1,5 +1,6 @@
 from datetime import datetime
 import csv
+from collections import defaultdict
 
 # Defining an Expense class for storage of data
 class Expense:
@@ -18,16 +19,15 @@ def load_expenses():
             next(reader)  # Skip header row
             for row in reader:
                 try:
-                    # Assuming date format in CSV is YYYY-MM-DD
                     date_str, amount, description, category = row
-                    date_obj = datetime.strptime(date_str, '%Y-%m-%d').date()  # Convert to date object
-                    amount = float(amount)  # Assuming amount is in the second element
-                except (ValueError, IndexError):  # Handle conversion and potential missing data
+                    date_obj = datetime.strptime(date_str, '%Y-%m-%d').date() 
+                    amount = float(amount) 
+                except (ValueError, IndexError):
                     date_obj = None
-                    amount = 0.0  # Or handle differently based on your needs
+                    amount = 0.0  
                 expenses.append(Expense(amount, description, category, date_obj))
     except FileNotFoundError:
-        pass  # Ignore if file doesn't exist
+        pass 
     return expenses
 
 # Save expenses to a CSV file
@@ -36,11 +36,10 @@ def save_expenses(expenses):
         writer = csv.writer(file)
         writer.writerow(["Date", "Amount", "Description", "Category"])
         for expense in expenses:
-            # Include date if available during saving
             if expense.date_time:
                 date_str = expense.date_time.strftime('%Y-%m-%d')
             else:
-                date_str = ""  # Or handle differently (e.g., placeholder)
+                date_str = ""  
             writer.writerow([date_str, expense.amount, expense.description, expense.category])
 
 # Add a new expense
@@ -48,7 +47,6 @@ def add_expense():
     amount = float(input("\nEnter amount spent: "))
     description = input("Enter a brief description: ")
     category = input("Enter expense category (e.g., food, transportation): ")
-    # Capture current date and time
     current_datetime = datetime.now()
     expenses.append(Expense(amount, description, category, current_datetime))
     save_expenses(expenses)
@@ -56,13 +54,15 @@ def add_expense():
 
 # View monthly expense summary
 def view_monthly_summary():
-    current_month = datetime.today().strftime('%Y-%m')
-    total_expense = 0
+    monthly_expenses = defaultdict(float)
     for expense in expenses:
-        # Check if expense has a date and if it falls within the current month
-        if expense.date_time and expense.date_time.strftime('%Y-%m') == current_month:
-            total_expense += expense.amount
-    print(f"\nTotal expense for {current_month}: {total_expense:.2f}")
+        if expense.date_time:
+            month_year = expense.date_time.strftime('%Y-%m')
+            monthly_expenses[month_year] += expense.amount
+    
+    print("\nMonthly expense summary:")
+    for month_year, total_expense in sorted(monthly_expenses.items()):
+        print(f"{month_year}: {total_expense:.2f}")
 
 # View category-wise expenditure
 def view_category_wise():
@@ -73,7 +73,7 @@ def view_category_wise():
             categories[category] += expense.amount
         else:
             categories[category] = expense.amount
-    print("\nCategory-wise expenditure:")
+    print("\nCategory-wise expenditure:\n")
     for category, amount in categories.items():
         print(f"{category}: {amount:.2f}")
 
